@@ -8,31 +8,25 @@ class Movie{
     public $IMDBrating;
 
     public function setIMDBrating(){
-        $this-> IMDBrating = rand(0, 5);
+        $this-> IMDBrating = rand(0, 10);
     }
 
-    function __construct($title, $year, $length, array $genre, $IMDBrating,){
+    function __construct($title, $year, $length, array $genre){
         $this-> title = $title;
         $this-> year = $year;
         $this-> length = $length;
         $this-> genre = $genre;
         $this-> setIMDBrating();
-
     }
-
 }
 
-$inception = new Movie ('Inception', '2010', '148', ['Action','Science Fiction'], 'setIMDBrating');
+$inception = new Movie ('Inception', '2010', '148', ['Action','Science Fiction']);
+$la_la_land = new Movie ('La La Land', '2016', '128', ['Musical', 'Romance', 'Drama']);
+$signore_anelli = new Movie ('Il Signore degli Anelli: Il Ritorno del Re', '2003', '201', ['Fantasy', 'Adventure', 'Action']);
+$interstellar = new Movie ('Interstellar', '2014', '169', ['Adventure', 'Science Fiction', 'Drama']);
+$pulp_fiction = new Movie ('Pulp Fiction', '1994', '154', ['Thriller', 'Crime', 'Drama']);
 
-$la_la_land = new Movie ('La La Land', '2016', '128', ['Musical', 'Romance', 'Drama'], 'setIMDBrating');
-
-$signore_anelli = new Movie ('Il Signore degli Anelli: Il Ritorno del Re', '2003', '201', ['Fantasy', 'Adventure', 'Action'], 'setIMDBrating');
-
-$interstellar = new Movie ('Interstellar', '2014', '169', ['Adventure', 'Science Fiction', 'Drama'], 'setIMDBrating');
-
-$pulp_fiction = new Movie ('Pulp Fiction', '1994', '154', ['Thriller', 'Crime', 'Drama'], 'setIMDBrating');
-
-// var_dump($inception, $la_la_land, $signore_anelli, $interstellar, $pulp_fiction);
+    // var_dump($inception, $la_la_land, $signore_anelli, $interstellar, $pulp_fiction);
 
 $movies = [$inception, $la_la_land, $signore_anelli, $interstellar, $pulp_fiction]
 
@@ -54,7 +48,7 @@ $movies = [$inception, $la_la_land, $signore_anelli, $interstellar, $pulp_fictio
 
     <div class="container">
         <div class="row">
-            <?php foreach ($movies as $movie): {?>
+            <?php foreach ($movies as $movie) {?>
                 <div class="col-md-6">
                     <div class="card mb-3">
                         <div class="card-body">
@@ -74,3 +68,4 @@ $movies = [$inception, $la_la_land, $signore_anelli, $interstellar, $pulp_fictio
 </body>
 
 </html>
+
