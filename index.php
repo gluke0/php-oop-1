@@ -11,7 +11,7 @@ class Movie{
         $this-> IMDBrating = rand(0, 5);
     }
 
-    function __construct($title, $year, $length, $genre, $IMDBrating,){
+    function __construct($title, $year, $length, array $genre, $IMDBrating,){
         $this-> title = $title;
         $this-> year = $year;
         $this-> length = $length;
@@ -22,17 +22,20 @@ class Movie{
 
 }
 
-$inception = new Movie ('Inception', '2010', '148', 'Action', 'setIMDBrating');
+$inception = new Movie ('Inception', '2010', '148', ['Action','Science Fiction'], 'setIMDBrating');
 
-$la_la_land = new Movie ('La La Land', '2016', '128', 'Musical', 'setIMDBrating');
+$la_la_land = new Movie ('La La Land', '2016', '128', ['Musical', 'Romance', 'Drama'], 'setIMDBrating');
 
-$signore_anelli = new Movie ('Il Signore degli Anelli: Il Ritorno del Re', '2003', '201', 'Fantasy', 'setIMDBrating');
+$signore_anelli = new Movie ('Il Signore degli Anelli: Il Ritorno del Re', '2003', '201', ['Fantasy', 'Adventure', 'Action'], 'setIMDBrating');
 
-$interstellar = new Movie ('Interstellar', '2014', '169', 'Adventure', 'setIMDBrating');
+$interstellar = new Movie ('Interstellar', '2014', '169', ['Adventure', 'Science Fiction', 'Drama'], 'setIMDBrating');
 
-$pulp_fiction = new Movie ('Pulp Fiction', '1994', '154', 'Thriller', 'setIMDBrating');
+$pulp_fiction = new Movie ('Pulp Fiction', '1994', '154', ['Thriller', 'Crime', 'Drama'], 'setIMDBrating');
 
 // var_dump($inception, $la_la_land, $signore_anelli, $interstellar, $pulp_fiction);
+
+$movies = [$inception, $la_la_land, $signore_anelli, $interstellar, $pulp_fiction]
+
 ?>
 
 <!DOCTYPE html>
@@ -48,26 +51,26 @@ $pulp_fiction = new Movie ('Pulp Fiction', '1994', '154', 'Thriller', 'setIMDBra
 </head>
 
 <body>
-    <div class="p-5">
-        <div class="container">
-            <div class="movie">
-                <?php echo $inception -> title, ', ', $inception -> year, ', ', $inception -> length, ', ', $inception -> genre, ', ', $inception -> IMDBrating; ?>
-            </div>
-            <div class="movie">
-                <?php echo $la_la_land -> title, ', ', $la_la_land -> year, ', ', $la_la_land -> length, ', ', $la_la_land -> genre, ', ', $la_la_land -> IMDBrating; ?>
-            </div>
-            <div class="movie">
-                <?php echo $signore_anelli -> title, ', ', $signore_anelli -> year, ', ', $signore_anelli -> length, ', ', $signore_anelli -> genre, ', ', $signore_anelli -> IMDBrating; ?>
-            </div>
-            <div class="movie">
-                <?php echo $interstellar -> title, ', ', $interstellar -> year, ', ', $interstellar -> length, ', ', $interstellar -> genre, ', ', $interstellar -> IMDBrating; ?>
-            </div>
-            <div class="movie">
-                <?php echo $pulp_fiction -> title, ', ', $pulp_fiction -> year, ', ', $pulp_fiction -> length, ', ', $pulp_fiction -> genre, ', ', $pulp_fiction -> IMDBrating; ?>
-            </div>
+
+    <div class="container">
+        <div class="row">
+            <?php foreach ($movies as $movie): {?>
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h4 class="card-title"><?php echo $movie->title; ?></h4>
+                            <p class="card-text"><strong> Year: </strong> <?php echo $movie-> year; ?> </p>
+                            <p class="card-text"><strong> Duration: </strong> <?php echo $movie-> length; ?> minutes </p>
+                            <p class="card-text"><strong> Genre: </strong> <?php echo implode(', ', $movie-> genre); ?></p>
+                            <p class="card-text"><strong> IMDB Rating: </strong> <?php echo $movie-> IMDBrating; ?> </p>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
+
 </html>
