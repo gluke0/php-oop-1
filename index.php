@@ -24,23 +24,15 @@ class Movie{
 
 $inception = new Movie ('Inception', '2010', '148', 'Action', 'setIMDBrating');
 
-var_dump($inception);
-
 $la_la_land = new Movie ('La La Land', '2016', '128', 'Musical', 'setIMDBrating');
-
-var_dump($la_la_land);
 
 $signore_anelli = new Movie ('Il Signore degli Anelli: Il Ritorno del Re', '2003', '201', 'Fantasy', 'setIMDBrating');
 
-var_dump($signore_anelli);
-
 $interstellar = new Movie ('Interstellar', '2014', '169', 'Adventure', 'setIMDBrating');
-
-var_dump($interstellar);
 
 $pulp_fiction = new Movie ('Pulp Fiction', '1994', '154', 'Thriller', 'setIMDBrating');
 
-var_dump($pulp_fiction);
+// var_dump($inception, $la_la_land, $signore_anelli, $interstellar, $pulp_fiction);
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +48,7 @@ var_dump($pulp_fiction);
 </head>
 
 <body>
-    <div>
+    <div class="p-5">
         <div class="container">
             <div class="movie">
                 <?php echo $inception -> title, ', ', $inception -> year, ', ', $inception -> length, ', ', $inception -> genre, ', ', $inception -> IMDBrating; ?>
